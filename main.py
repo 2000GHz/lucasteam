@@ -1,6 +1,3 @@
-import csv
+import gestion_juegos as gestor
 
-with open('juegos.csv', newline='') as csvfile:
-    data = list(csv.reader(csvfile))
-
-print(data[1][1])
+print(gestor.get_CSV())

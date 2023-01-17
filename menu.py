@@ -1,15 +1,13 @@
-int opcion = 0
-
-while (opcion<4):
-          
-    def mostrarMenu():
-
+def mostrarMenu():
+    opcion = 0
+    print(int(input("\nIntroduzca opción (1-4): ")))
     
-        print(int("\nIntroduzca opción (1-4): "))
-          
-                if (opcion==1):
-                    print("Has escogido la opcion 1")
-                    return numerosDelUnoAlDiez()
-
-                else:
-                    print("Has escogido la opcion Salir") 
+    if (opcion==1):
+        
+         print("Has escogido la opcion 1")
+         
+    else:
+        
+        print("Has escogido la opcion Salir") 
+    return opcion
+    
