@@ -1,0 +1,60 @@
+					BACKLOG EQUIPO 4
+
+1. Yo como administrador quiero acceder al listado de juegos para verlo en la pantalla.
+
+	1.1. Investigar sobre herramientas necesarias para el desarrollo (Jira/Confluence/PEP-8/CSV).
+	1.2. Planificar uso de control de versiones.
+		1.2.1. Crear repositorios.
+		1.2.2. Pruebas de uso.
+	1.3. Crear estructura principal del proyecto.	
+		1.3.1. Estructuras de directorios.
+		1.3.2. Hacer el archivo README.
+	1.4. Montar parte gráfica (menú).
+	1.5. Crear función get_CSV():Dict<Juegos>.
+		1.5.1. Crear módulo gestion_juegos.py
+		1.5.2  Crear el algortimo get_CSV en el módulo.
+		1.5.3. Documentar el método.
+	1.6 Pruebas de calidad
+	1.7. Prueba unitaria comprobación de valores en el diccionario.
+
+2. Yo como administrador quiero añadir juegos nuevos para tener la información actualizada.
+
+	2.1. Modificar parte gráfica (menú).
+	2.2. Crear función add_games():Value<Nuevo juego>.
+		2.2.1. Añadir a módulo gestion_juegos.py
+		2.2.2  Crear el algoritmo add_games en el módulo.
+		2.2.3. Documentar el método.
+	2.3. Pruebas de calidad.
+	2.4. Prueba unitaria comprobar que el elemento se añade al diccionario.
+	2.5. Prueba unitaria comprobar suceso en el que el valor sea null.
+	2.6. Prueba unitaria comprobar inserción valor vacío.
+
+3. Yo como administrador quiero poder filtrar por géneros para acceder a información específica.
+	
+	3.1. Modificar parte gráfica (menú).
+	3.2. Crear función de filter_gen(género):.
+		3.2.1. Añadir a módulo gestion_juegos.py
+		3.2.2  Crear el algoritmo filter_gen en el módulo.
+		3.2.3. Documentar el método.
+	3.3. Prueba de calidad.
+	3.4. Prueba unitaria género null.
+	3.5. Prueba unitaria de género erróneo.
+
+
+
+
+
+
+
+
+
+
+
+
+4. Yo como administrador quiero listar editores para saber el desarrollador.
+5. Yo como administrador quiero listar los 5 juegos más vendidos por regiones para comprender mi relacion demográfica.
+6. Yo como administrador quiero listar los juegos del siglo XX para ver la evolución.
+7. Yo como administrador quiero poder dar de baja juegos en caso de que no me interesen o por inserción erronea.
+8. Yo como administrador quiero poder actualizar juegos para que este siempre al dia mis datos.
+9. Yo como administrador quiero mostrar las ventas por encima de la media para hacer un estudio de mercado.
+10. Yo como administrador quiero filtrar por años pares para mis estadísticas.
