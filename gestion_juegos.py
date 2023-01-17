@@ -26,8 +26,8 @@ def get_diccionario():
 
 
 def add_games():
-    columnas = ['Rank', 'Name', 'Platform', 'Year', 'Genre', 'Publisher', 
-                'NA_Sales', 'EU_Sales', 'JP_Sales', 'Other_Sales', 
+    columnas = ['Rank', 'Name', 'Platform', 'Year', 'Genre', 'Publisher',
+                'NA_Sales', 'EU_Sales', 'JP_Sales', 'Other_Sales',
                 'Global_Sales']
     lista_asubir = []
     # Bucle para solicitar datos a añadir
