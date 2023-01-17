@@ -1,13 +1,24 @@
-def mostrarMenu():
-    opcion = 0
-    print(int(input("\nIntroduzca opción (1-4): ")))
-    
-    if (opcion==1):
+def pedirNumero():
+ 
+    correcto=False
+    num=0
+    while(not correcto):
+        try:
+            print ("1. Opción 1")
+            print ("2. Opción 2")
+            print ("3. Opción 3")
+            print ("4. Salir")
+            num = int(input("Introduce un número entero: "))
+            correcto=True
+            
+        except ValueError:
+            print('Error, introduce un número entero')
         
-         print("Has escogido la opcion 1")
-         
-    else:
-        
-        print("Has escogido la opcion Salir") 
-    return opcion
+        if num == 1:
+            print ("Opción 1")
+        elif num == 4:
+            salir = True
+        else:
+            print ("Introduce un número 1 o 4")
+ 
     
