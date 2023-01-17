@@ -1,5 +1,5 @@
 import csv
-
+# Esta funcion abre el archivo CSV, lo vuelca en una lista y devuelve esa lista.
 def get_CSV():
     with open('juegos.csv', newline='') as csvfile:
         data = list(csv.reader(csvfile))
