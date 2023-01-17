@@ -45,7 +45,51 @@ def add_games():
 
 
 def filtrado_nombre(nombre):
+
+    diccionario_juego = []
     lista_aux = get_diccionario()
-    for i in range(lista_aux):
+    for i in range(len(lista_aux)):
         if lista_aux[i]["Name"] == nombre:
-            print(lista_aux[i])
+            # print(lista_aux[i])
+            diccionario_juego = lista_aux[i]
+
+    return diccionario_juego
+
+# La función devuelve el diccionario del juego solicitado
+
+
+def termino_busqueda():
+
+    Salir = False
+    while (not Salir):
+        try:
+            nombre = str(input("Introduce un término de búsqueda: "))
+            valoresfiltrado = filtrado_nombre(nombre)
+            if len(valoresfiltrado) == 0:
+                salir_subbucle = False
+                while not salir_subbucle:
+
+                    add_game_prompt = str(input(
+                        "\nEl juego no se encuentra en la base" +
+                        " de datos,¿Te gustaría añadirlo?\n1. Sí\n2. No"
+                        + "\n3. Realizar otra búsqueda "))
+                    if add_game_prompt == '1':
+                        salir_subbucle = True
+                        add_games()
+                    elif add_game_prompt == '2':
+                        print("¡Hasta luego!")
+                        salir_subbucle = True
+                    elif add_game_prompt == '3':
+                        salir_subbucle = True
+                        print('\n')
+                        termino_busqueda()
+                    else:
+                        print("\nIntroduce un valor correcto")
+            else:
+                print(valoresfiltrado)
+            Salir = True
+        except ValueError:
+            print('Error, revisa la entrada e inténtalo de nuevo.')
+
+
+filtrado_nombre(termino_busqueda())
