@@ -17,8 +17,9 @@ def pedirNumero():
         if num == 1:
             print ("Opción 1")
         elif num == 4:
-            salir = True
+            correcto = True
         else:
             print ("Introduce un número 1 o 4")
  
     
+pedirNumero()
