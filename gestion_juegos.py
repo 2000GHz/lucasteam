@@ -2,8 +2,8 @@ import csv
 # Esta funcion abre el archivo CSV, lo vuelca en una lista y devuelve esa lista.
 def get_CSV():
     with open('juegos.csv', newline='') as csvfile:
-        data = list(csv.reader(csvfile))
-    return data
+        lista_csv = list(csv.reader(csvfile))
+    return lista_csv
 print(get_CSV())
 
 with open('example.csv', 'w', newline='') as csvfile:
@@ -11,5 +11,5 @@ with open('example.csv', 'w', newline='') as csvfile:
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
     writer.writeheader()
-    for row in data:
-        writer.writerow(row)
+    for fila in lista_csv:
+        writer.writerow(fila)
