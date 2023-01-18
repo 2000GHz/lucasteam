@@ -1,4 +1,3 @@
-
 import csv
 import heapq
 import menu
@@ -67,7 +66,7 @@ def add_games():
             saved_csv(lista_asubir) 
             input("---> ¿Ordenar el fichero CSV por ventas globales? S/N: ")
             if paso2.lower() == "s": sorted_games()
-        paso = input("--->Quieres añadir algun juego mas S/N:  ")
+        paso = input("Quieres añadir algun juego mas S/N:  ")
         if paso.lower() == "n":true = False 
     menu.pedirNumero()  
 # Permite escribir nuevas lineas en el csv

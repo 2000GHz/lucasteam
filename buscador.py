@@ -109,8 +109,5 @@ def filtrar_por():
         if eleccion == "":
             print("\n***No se ha introducido texto***\n")
     return eleccion
-
-
-buscar()
 # print(formateador_nombres(contenidocsv))
 # print((formateador_generos(contenidocsv)))
