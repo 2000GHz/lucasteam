@@ -24,7 +24,7 @@ def get_diccionario():
         lista_dict.append(diccionario_aux)
     return lista_dict
 
-# Esta funcion tiene que permitir añadir juegos nuevos
+# Esta funcion permite añadir juegos nuevos
 
 
 def add_games():
