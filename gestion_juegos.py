@@ -57,6 +57,18 @@ def filtrado_nombre(nombre):
 
     return diccionario_juego
 
+
+def filtrado_genero(nombre):
+
+    diccionario_juego = []
+    lista_aux = get_dict()
+    for i in range(len(lista_aux)):
+        if lista_aux[i]["Genre"] == nombre:
+            # print(lista_aux[i])
+            diccionario_juego = lista_aux[i]
+
+    return diccionario_juego
+
 # La función devuelve el diccionario del juego solicitado
 
 
@@ -67,11 +79,21 @@ def termino_busqueda():
         try:
             nombre = str(input("Introduce un término de búsqueda: "))
             valoresfiltrado = filtrado_nombre(nombre)
-            if len(valoresfiltrado) == 0:
-                salir_subbucle = False
-                print("No se ha introducido texto")
-                while not salir_subbucle:
 
+            """Si el parámetro introducido en filtrado_nombre() no se encuentra
+            en el diccionario, la longitud devuelta es igual a 0"""
+
+            if len(valoresfiltrado) == 0:
+                if nombre == '':
+                    print("No se ha introducido texto")
+                    termino_busqueda()  # Se vuelve a pedir la entrada
+
+                """Se crea un subbucle para manejar cualquier entrada
+                   no contenida en el diccionario distinta de 0
+                """
+                salir_subbucle = False
+
+                while not salir_subbucle:
                     add_game_prompt = str(input(
                         "\nEl juego no se encuentra en la base" +
                         " de datos,¿Te gustaría añadirlo?\n1. Sí\n2. No"
@@ -91,7 +113,7 @@ def termino_busqueda():
             else:
                 print(valoresfiltrado)
             Salir = True
-        except ValueError:
+        except Exception:
             print('Error, revisa la entrada e inténtalo de nuevo.')
 
 # La función devuelve los 5 juegos más vendidos en el mundo
@@ -103,12 +125,11 @@ def max_globalsales():
     num_globalsales = heapq.nlargest(5, lista_aux, key=lambda s: float(s['Global_Sales']))
     for i in range(len(num_globalsales)):
         print(num_globalsales[i]["Name"],num_globalsales[i]["Global_Sales"])
-    
+
     return diccionario_juego
 
 
 # max_globalsales()
 
 filtrado_nombre(termino_busqueda())
-
 
