@@ -49,7 +49,7 @@ def add_games():
 def filtrado_nombre(nombre):
 
     diccionario_juego = []
-    lista_aux = get_diccionario()
+    lista_aux = get_dict()
     for i in range(len(lista_aux)):
         if lista_aux[i]["Name"] == nombre:
             # print(lista_aux[i])
@@ -69,6 +69,7 @@ def termino_busqueda():
             valoresfiltrado = filtrado_nombre(nombre)
             if len(valoresfiltrado) == 0:
                 salir_subbucle = False
+                print("No se ha introducido texto")
                 while not salir_subbucle:
 
                     add_game_prompt = str(input(
@@ -97,7 +98,7 @@ def termino_busqueda():
 
 def max_globalsales():
     diccionario_juego = []
-    lista_aux = get_diccionario()
+    lista_aux = get_dict()
     num_globalsales = []
     num_globalsales = heapq.nlargest(5, lista_aux, key=lambda s: float(s['Global_Sales']))
     for i in range(len(num_globalsales)):
@@ -106,7 +107,7 @@ def max_globalsales():
     return diccionario_juego
 
 
-max_globalsales()
+# max_globalsales()
 
 filtrado_nombre(termino_busqueda())
 
