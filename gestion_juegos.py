@@ -13,7 +13,7 @@ def get_CSV():
 # Esta funcion genera una lista y dentro de ellas un diccionario
 
 
-def get_diccionario():
+def get_dict():
     lista = get_CSV()
     columnas = lista[0]
     diccionario_aux = {}
