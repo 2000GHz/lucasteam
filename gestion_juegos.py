@@ -11,10 +11,11 @@ def get_CSV():
         with open("juegos.csv", newline="", encoding="utf-8") as csvfile:
             lista_csv = list(csv.reader(csvfile))  
     except Exception:
-        print("No se ha podido cargar el fichero CSV.")
-        print("Coloque el fichero juegos.csv en la carpeta")
+        print("***No se ha podido cargar el fichero CSV***")
+        print("***Coloque el fichero juegos.csv en la carpeta***")
     return lista_csv
 # Esta funcion genera una lista y dentro de ellas un diccionario
+
 
 def get_dict():
     lista = get_CSV()
@@ -29,12 +30,15 @@ def get_dict():
 
 # Esta funcion permite añadir juegos nuevos
 
+
 def add_games():    
+
 # Bucle para solicitar datos a añadir
+
     true = True
     fecha_actual = datetime.now()
     year_actual = fecha_actual.year
-    print(year_actual)
+    print("----------", year_actual, "----------")
     while true:
         fieldnames = ['Name', 'Platform', 'Year', 'Genre', 'Publisher',
                 'NA_Sales', 'EU_Sales', 'JP_Sales', 'Other_Sales']
@@ -45,37 +49,41 @@ def add_games():
             salir = True
             while salir:
                 try:
-                    lista_asubir.append(input("Introduce el {}: ".format(fieldnames[i])))
+                    lista_asubir.append(input("--> Introduce el/la {}: ".format(fieldnames[i])))
                     if lista_asubir[i+1] == "":
-                        raise ValueError("No puede estar vacío")
+                        raise ValueError("***No puede estar vacío***")
                     if fieldnames[i] == "Year" and int(lista_asubir[i+1]) > year_actual:
-                        raise ValueError("Valor inválido")
+                        raise ValueError("***Valor inválido***")
                     if fieldnames[i] == 'NA_Sales' or fieldnames[i] == 'EU_Sales' or fieldnames[i] == 'JP_Sales' or fieldnames[i] == 'Other_Sales':
                         global_sales += float(lista_asubir[i+1])
                     salir = False
                 except ValueError:
-                    print("Los valores indicados son erroneos.")
+                    print("\n***Error valor/es***")
                     lista_asubir.pop()
-        print("Total de ventas globales: {}".format(global_sales))
+        print("***Total de ventas globales: {}***".format(global_sales))
         lista_asubir.append(global_sales)
-        paso2 = input("¿Quieres guardar los cambios en el CSV? S/N: ")
+        paso2 = input("---> ¿Quieres guardar los cambios en el CSV? S/N: ")
         if paso2.lower() == "s": 
             saved_csv(lista_asubir) 
-            input ("¿Quieres ordenar el fichero CSV por numero de ventas globales? S/N: ")
+            input("---> ¿Ordenar el fichero CSV por ventas globales? S/N: ")
             if paso2.lower() == "s": sorted_games()
-        paso = input("Quieres añadir algun juego mas S/N:  ")
+        paso = input("--->Quieres añadir algun juego mas S/N:  ")
         if paso.lower() == "n":true = False 
     menu.pedirNumero()  
 # Permite escribir nuevas lineas en el csv
-def saved_csv(lista_asubir):
-    
+
+
+def saved_csv(lista_asubir): 
     with open("juegos.csv", "a", newline="", encoding="utf-8") as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerow(lista_asubir)
-    print("Se ha guardado en el fichero CSV")
+    print("***Se ha guardado en el fichero CSV***")
     
-# Funcion que permite ordenar los datos del fichero modificado y los guarda                  
+# Funcion que permite ordenar los datos del fichero modificado y los guarda
+
+
 def sorted_games():
+
     csv2 = get_CSV()
     lista_csv = []
     for i in range(1,len(csv2)):
@@ -91,7 +99,7 @@ def sorted_games():
     with open("juegos.csv", "w", newline="", encoding="utf-8") as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerows(sorted_list)
-    print("Se ha ordenado el fichero CSV.")
+    print("***Se ha ordenado el fichero CSV***")
 
     
 # La función devuelve los 5 juegos más vendidos en el mundo
@@ -105,4 +113,3 @@ def max_globalsales():
         print(num_globalsales[i]["Name"],num_globalsales[i]["Global_Sales"])
 
     return diccionario_juego
-
