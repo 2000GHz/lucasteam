@@ -1,3 +1,7 @@
+"""import buscador
+import gestion_juegos"""
+
+
 def pedirNumero():
 
     correcto = False
@@ -15,10 +19,12 @@ def pedirNumero():
 
         if num == 1:
             print("=======Buscar juego=======")
-            from gestion_juegos import get_CSV
+            from buscador import buscar
+            buscar()
         elif num == 2:
             print("=======Añadir juego=======")
             from gestion_juegos import add_games
+            add_games()
         elif num == 4:
             correcto = True
         else:

@@ -19,12 +19,12 @@ def filtrado_genero(termino_a_buscar):
     print("La lista de juegos del género",
           termino_a_buscar, "es: ")
     for juego in range(len(lista_aux)):
-        if lista_aux[juego]["Genre"] == termino_a_buscar: 
+        if lista_aux[juego]["Genre"] == termino_a_buscar:
             print(lista_aux[juego]["Name"])
     return "\nPrograma finalizado"
 
 
-def termino_busqueda():
+def buscar():
 
     salir = False
     eleccion = filtrar_por()
@@ -48,7 +48,7 @@ def termino_busqueda():
             if len(valoresfiltrados) == 0:
                 if termino_a_buscar == '':
                     print("No se ha introducido texto")
-                    termino_busqueda()  # Se vuelve a pedir la entrada
+                    buscar()  # Se vuelve a pedir la entrada
 
                 """Se crea un subbucle para manejar cualquier entrada
                    no contenida en el diccionario distinta de 0
@@ -70,7 +70,7 @@ def termino_busqueda():
                     elif add_game_prompt == '3':
                         salir_subbucle = True
                         print('\n')
-                        termino_busqueda()
+                        buscar()
                     else:
                         print("\nIntroduce un valor correcto")
             else:
@@ -103,4 +103,4 @@ def filtrar_por():
     return eleccion
 
 
-termino_busqueda()
+buscar()
