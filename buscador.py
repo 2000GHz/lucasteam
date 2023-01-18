@@ -104,4 +104,3 @@ def filtrar_por():
     return eleccion
 
 
-buscar()

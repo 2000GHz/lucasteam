@@ -1,17 +1,20 @@
+
 import csv
 import heapq
-
-
+import menu
+from datetime import datetime
 # Esta función abre el archivo CSV, lo vuelca en una lista y la devuelve.
 
 
 def get_CSV():
-    with open("juegos.csv", newline="", encoding="utf-8") as csvfile:
-        lista_csv = list(csv.reader(csvfile))
+    try:
+        with open("juegos.csv", newline="", encoding="utf-8") as csvfile:
+            lista_csv = list(csv.reader(csvfile))  
+    except Exception:
+        print("No se ha podido cargar el fichero CSV.")
+        print("Coloque el fichero juegos.csv en la carpeta")
     return lista_csv
-
 # Esta funcion genera una lista y dentro de ellas un diccionario
-
 
 def get_dict():
     lista = get_CSV()
@@ -26,34 +29,57 @@ def get_dict():
 
 # Esta funcion permite añadir juegos nuevos
 
-
-
-def add_games():
-
+def add_games():    
 # Bucle para solicitar datos a añadir
     true = True
+    fecha_actual = datetime.now()
+    year_actual = fecha_actual.year
+    print(year_actual)
     while true:
         fieldnames = ['Name', 'Platform', 'Year', 'Genre', 'Publisher',
                 'NA_Sales', 'EU_Sales', 'JP_Sales', 'Other_Sales']
         lista_asubir = []
-        lista_asubir.append("")
+        lista_asubir.append(" ")
         global_sales = 0
         for i in range(len(fieldnames)):
-                lista_asubir.append(input("Introduce el {}: ".format(fieldnames[i])))
-                if fieldnames[i] == 'NA_Sales' or fieldnames[i] == 'EU_Sales' or fieldnames[i] == 'JP_Sales' or fieldnames[i] == 'Other_Sales':
-                    global_sales += float(lista_asubir[i])
+            salir = True
+            while salir:
+                try:
+                    lista_asubir.append(input("Introduce el {}: ".format(fieldnames[i])))
+                    if fieldnames[i] == "Year" and int(lista_asubir[i+1]) > year_actual:
+                        raise ValueError("Valor inválido")
+                    if fieldnames[i] == 'NA_Sales' or fieldnames[i] == 'EU_Sales' or fieldnames[i] == 'JP_Sales' or fieldnames[i] == 'Other_Sales':
+                        global_sales += float(lista_asubir[i+1])
+                    salir = False
+                except ValueError:
+                    print("Los valores indicados son erroneos.")
+                    lista_asubir.pop()
+        print("Total de ventas globales: {}".format(global_sales))
         lista_asubir.append(global_sales)
-                # Permite escribir nuevas lineas en el csv
-        with open("juegos.csv", "a", newline="", encoding="utf-8") as csvfile:
-                csv_writer = csv.writer(csvfile)
-                csv_writer.writerow(lista_asubir)
-
+        paso2 = input("¿Quieres guardar los cambios en el CSV? S/N: ")
+        if paso2.lower() == "s": 
+            saved_csv(lista_asubir) 
+            input ("¿Quieres ordenar el fichero CSV por numero de ventas globales? S/N: ")
+            if paso2.lower() == "s": sorted_games()
+        paso = input("Quieres añadir algun juego mas S/N:  ")
+        if paso.lower() == "n":true = False 
+    menu.pedirNumero()  
+# Permite escribir nuevas lineas en el csv
+def saved_csv(lista_asubir):
+    
+    with open("juegos.csv", "a", newline="", encoding="utf-8") as csvfile:
+        csv_writer = csv.writer(csvfile)
+        csv_writer.writerow(lista_asubir)
+    print("Se ha guardado en el fichero CSV")
+    
+# Funcion que permite ordenar los datos del fichero modificado y los guarda                  
 def sorted_games():
     csv2 = get_CSV()
     lista_csv = []
     for i in range(1,len(csv2)):
         lista_csv.append(csv2[i])
-    diccionario = ['Rank', 'Name', 'Platform', 'Year', 'Genre', 'Publisher', 'NA_Sales', 'EU_Sales', 'JP_Sales', 'Other_Sales', 'Global_Sales']
+    diccionario = ['Rank', 'Name', 'Platform', 'Year', 'Genre', 'Publisher',
+                   'NA_Sales','EU_Sales', 'JP_Sales', 'Other_Sales', 'Global_Sales']
     sorted_list = sorted(lista_csv, key=lambda x: float(x[10]), reverse= True)
     for i in range(len(sorted_list)):
         sorted_list[i][0] = i+1
@@ -63,9 +89,9 @@ def sorted_games():
     with open("juegos.csv", "w", newline="", encoding="utf-8") as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerows(sorted_list)
-sorted_games()
+    print("Se ha ordenado el fichero CSV.")
 
-
+    
 # La función devuelve los 5 juegos más vendidos en el mundo
 
 def max_globalsales():
@@ -78,5 +104,3 @@ def max_globalsales():
 
     return diccionario_juego
 
-
-# max_globalsales()

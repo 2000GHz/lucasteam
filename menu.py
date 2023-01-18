@@ -1,5 +1,5 @@
-"""import buscador
-import gestion_juegos"""
+import buscador
+import gestion_juegos
 
 
 def pedirNumero():
@@ -32,4 +32,3 @@ def pedirNumero():
             correcto = False
 
 
-pedirNumero()
