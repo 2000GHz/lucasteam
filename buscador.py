@@ -36,15 +36,14 @@ def termino_busqueda():
                 valoresfiltrados = filtrado_nombre(termino_a_buscar)
                 salir = True
 
-                # Si no se mete ninguna función de búsqueda adicional, cambiar a else
             if eleccion == "2":
                 valoresfiltrados = filtrado_genero(termino_a_buscar)
                 salir = True
 
             # valoresfiltrados = filtrado_genero(termino_a_buscar)
 
-            """Si el parámetro introducido en filtrado_termino_a_buscar() no se encuentra
-            en el diccionario, la longitud devuelta es igual a 0"""
+            """Si el parámetro introducido en filtrado_termino_a_buscar() no
+            se encuentra en el diccionario la longitud devuelta es igual a 0"""
 
             if len(valoresfiltrados) == 0:
                 if termino_a_buscar == '':
