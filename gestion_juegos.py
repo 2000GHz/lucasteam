@@ -1,4 +1,6 @@
 import csv
+import heapq
+
 
 # Esta función abre el archivo CSV, lo vuelca en una lista y la devuelve.
 
@@ -91,5 +93,21 @@ def termino_busqueda():
         except ValueError:
             print('Error, revisa la entrada e inténtalo de nuevo.')
 
+# La función devuelve los 5 juegos más vendidos en el mundo
+
+def max_globalsales():
+    diccionario_juego = []
+    lista_aux = get_diccionario()
+    num_globalsales = []
+    num_globalsales = heapq.nlargest(5, lista_aux, key=lambda s: float(s['Global_Sales']))
+    for i in range(len(num_globalsales)):
+        print(num_globalsales[i]["Name"],num_globalsales[i]["Global_Sales"])
+    
+    return diccionario_juego
+
+
+max_globalsales()
 
 filtrado_nombre(termino_busqueda())
+
+
