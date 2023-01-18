@@ -46,6 +46,8 @@ def add_games():
             while salir:
                 try:
                     lista_asubir.append(input("Introduce el {}: ".format(fieldnames[i])))
+                    if lista_asubir[i+1] == "":
+                        raise ValueError("No puede estar vacío")
                     if fieldnames[i] == "Year" and int(lista_asubir[i+1]) > year_actual:
                         raise ValueError("Valor inválido")
                     if fieldnames[i] == 'NA_Sales' or fieldnames[i] == 'EU_Sales' or fieldnames[i] == 'JP_Sales' or fieldnames[i] == 'Other_Sales':
