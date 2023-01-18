@@ -30,7 +30,7 @@ def buscar():
     eleccion = filtrar_por()
     while (not salir):
         try:
-            termino_a_buscar = str(input("Introduce un término de búsqueda: "))
+            termino_a_buscar = str(input("-->Introduce un término a buscar: "))
 
             if eleccion == "1":
                 valoresfiltrados = filtrado_nombre(termino_a_buscar)
@@ -57,49 +57,50 @@ def buscar():
 
                 while not salir_subbucle:
                     add_game_prompt = str(input(
-                        "\nNo se encuentra ningún juego con estas" +
+                        "\n***No se encuentra ningún juego con estas" +
                         " características en la base de datos," +
-                        " ¿Te gustaría añadirlo?\n1. Sí\n2. No"
-                        + "\n3. Realizar otra búsqueda "))
+                        " ¿Te gustaría añadirlo?***\n \n1. Sí\n2. No"
+                        + "\n3. Realizar otra búsqueda\n\n---> "))
                     if add_game_prompt == '1':
                         salir_subbucle = True
                         gestion_juegos.add_games()
                     elif add_game_prompt == '2':
-                        print("¡Hasta luego!")
+                        print("================¡Hasta luego!=================")
                         salir_subbucle = True
                     elif add_game_prompt == '3':
                         salir_subbucle = True
                         print('\n')
                         buscar()
                     else:
-                        print("\nIntroduce un valor correcto")
+                        print("\n=====Introduce un valor correcto=====")
             else:
                 print(valoresfiltrados)
                 salir = True
 
         except Exception:
-            print('Error, revisa la entrada e inténtalo de nuevo.')
+            print("***¡Error, revisa la entrada e inténtalo de nuevo!***")
 
 
 def filtrar_por():
     salir = False
     try:
         while not salir:
-            eleccion = str(input("\n¿Por qué quieres buscar?" +
-                                 "\n1. Por nombre"
-                                 + "\n2. Por género "))
+            print("===Tipo de búsqueda===")
+            print("\n 1. Por nombre")
+            print("\n 2. Por género")
+            eleccion = str(input("\n---> "))
             if eleccion == "1":
                 print("\n")
-                print("Has seleccionado búsqueda por nombre")
+                print("***Has seleccionado búsqueda por nombre***\n")
                 salir = True
 
             if eleccion == "2":
                 print("\n")
-                print("Has seleccionado búsqueda por género")
+                print("***Has seleccionado búsqueda por género***\n")
                 salir = True
 
     except ValueError:
-        print("Se ha producido un error, inténtalo de nuevo")
+        print("***¡Se ha producido un error, inténtalo de nuevo!***")
     return eleccion
 
 
