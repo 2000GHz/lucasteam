@@ -15,7 +15,7 @@ def pedirNumero():
                     ["2 · Búsqueda de juegos"],
                     ["3 · Añadir juegos"],
                     ["4 · Salir "]]
-            print(tabulate(data, headers=col_name, tablefmt="fancy_grid"))
+            print(tabulate(data, headers=col_name, tablefmt="fancy_grid", stralign='center'))
             num = int(input("\n--> Introduce una opción: "))
             if num == 1:
                 print("\n=======Listar CSV=======\n")

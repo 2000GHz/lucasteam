@@ -156,10 +156,10 @@ def sorted_games():
 
 def max_globalsales():
     lista_aux = get_dict()
-    num_globalsales = (
-        heapq.nlargest(5, lista_aux, key=lambda s: float(s['Global_Sales'])))
+    num_globalsales = []
+    num_globalsales = heapq.nlargest(5, lista_aux, key=lambda s: float(s['Global_Sales']))
     for i in range(len(num_globalsales)):
-        print(num_globalsales[i]["Name"], num_globalsales[i]["Global_Sales"])
-    input("***Pulsa cualquier tecla para salir***")
+        print(num_globalsales[i]["Rank"], "juego: ", num_globalsales[i]["Name"], ", con ", num_globalsales[i]["Global_Sales"], " millones de ventas.")
+    input("***Pulse cualquier tecla para continuar***")
     
 

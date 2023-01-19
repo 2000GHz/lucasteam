@@ -1,6 +1,7 @@
 import gestion_juegos
 import menu
 import os
+import tabulate
 contenidocsv = []
 contenidocsv = gestion_juegos.get_dict()
 
@@ -63,7 +64,9 @@ def filtrado_nombre(termino_a_buscar):
         for juego in range(len(contenidocsv)):
             if lista_nombres_minusculas[juego] == nombreminusculas:
                 diccionario_juego = contenidocsv[juego]
-                print(diccionario_juego)
+                print("========================================\n",
+                      tabulate(diccionario_juego.items(),
+                               tablefmt="fancy_grid"))
     else:
         juegoexiste = False
 
@@ -201,12 +204,15 @@ def filtrar_por():
         if eleccion == "1":
             print("\n")
             print("*** Has seleccionado búsqueda por nombre ***\n")
+            buscar()
         elif eleccion == "2":
             print("\n")
             print("*** Has seleccionado búsqueda por género ***\n")
+            filtrado_genero()
         elif eleccion == "3":
             print("\n")
             print("*** Has seleccionado búsqueda por editor ***\n")
+            filtrado_editor()
         elif eleccion == "4":
             gestion_juegos.max_globalsales()
         elif eleccion == "5":
