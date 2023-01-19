@@ -5,7 +5,7 @@ from datetime import datetime
 # Esta función abre el archivo CSV, lo vuelca en una lista y la devuelve.
 
 
-def get_CSV():
+def get_csv():
     try:
         with open("juegos.csv", newline="", encoding="utf-8") as csvfile:
             lista_csv = list(csv.reader(csvfile))
@@ -17,7 +17,7 @@ def get_CSV():
 
 
 def get_dict():
-    lista = get_CSV()
+    lista = get_csv()
     columnas = lista[0]
     diccionario_aux = {}
     lista_dict = []
