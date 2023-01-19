@@ -92,7 +92,7 @@ def saved_csv(lista_asubir):
 
 def sorted_games():
 
-    csv2 = get_CSV()
+    csv2 = get_csv()
     lista_csv = []
     for i in range(1, len(csv2)):
         lista_csv.append(csv2[i])
