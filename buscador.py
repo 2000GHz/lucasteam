@@ -79,15 +79,15 @@ def buscar():
     eleccion = filtrar_por()
     while (not salir):
 
-        termino_a_buscar = (str(input("--> Introduce término a buscar: ")))
-
         if eleccion == "1":
-            filtrado_nombre(termino_a_buscar)
+            termino_a_buscar = (str(input("--> Introduce término a buscar: ")))
             salir = True
+            filtrado_nombre(termino_a_buscar)
 
         if eleccion == "2":
-            filtrado_genero(termino_a_buscar)
+            termino_a_buscar = (str(input("--> Introduce término a buscar: ")))
             salir = True
+            filtrado_genero(termino_a_buscar)
 
 
 def filtrar_por():
@@ -109,6 +109,7 @@ def filtrar_por():
             salir = True
         if eleccion == "3":
             menu.pedirNumero()
+            salir = True
         if eleccion == "":
             print("\n***No se ha introducido texto***\n")
     return eleccion
