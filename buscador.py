@@ -22,6 +22,20 @@ def formateador_nombres(contenidocsv):
     return lista_nombres_minusculas
 
 
+def formateador_generos(contenidocsv):
+
+    lista_generos_minusculas = []
+
+    for juego in range(len(contenidocsv)):
+        generos = contenidocsv[juego]["Genre"]
+        lista_generos_minusculas.append(str(generos).lower())
+
+    set_ordenador = set(lista_generos_minusculas)
+    lista_generos_minusculas = set_ordenador
+
+    return lista_generos_minusculas
+
+
 def filtrado_nombre(termino_a_buscar):
     diccionario_juego = contenidocsv
 
@@ -61,16 +75,19 @@ def filtrado_nombre(termino_a_buscar):
 def filtrado_genero(termino_a_buscar):
     termino_a_buscar == termino_a_buscar.lower()
     lista_aux = contenidocsv
-
+    generos = formateador_generos(contenidocsv)
     """if termino_a_buscar in listageneros:
         termino_a_buscar = termino_a_buscar.capitalize()"""
 
-    for juego in range(len(lista_aux)):
-        if lista_aux[juego]["Genre"] == termino_a_buscar.capitalize():
+    if termino_a_buscar not in generos:
+        print("*** El género especificado no existe ***")
+    else:
+        for juego in range(len(lista_aux)):
+            if lista_aux[juego]["Genre"] == termino_a_buscar.capitalize():
 
-            # Devolvemos la lista de juegos correspondientes a este género
+                # Devolvemos la lista de juegos correspondientes a este género
 
-            print(lista_aux[juego]["Name"])
+                print(lista_aux[juego]["Name"])
 
 
 def buscar():
@@ -82,7 +99,7 @@ def buscar():
         if eleccion == "1":
             termino_a_buscar = (str(input("--> Introduce término a buscar: ")))
             if termino_a_buscar == "":
-                print("\n***No se ha introducido texto***\n")
+                print("\n*** No se ha introducido texto ***\n")
                 salir = False
             else:
                 salir = True
@@ -91,7 +108,7 @@ def buscar():
         if eleccion == "2":
             termino_a_buscar = (str(input("--> Introduce término a buscar: ")))
             if termino_a_buscar == "":
-                print("\n***No se ha introducido texto***\n")
+                print("\n*** No se ha introducido texto ***\n")
                 salir = False
             else:
                 salir = True
@@ -110,18 +127,18 @@ def filtrar_por():
 
         if eleccion == "1":
             print("\n")
-            print("***Has seleccionado búsqueda por nombre***\n")
+            print("*** Has seleccionado búsqueda por nombre ***\n")
             salir = True
 
         if eleccion == "2":
             print("\n")
-            print("***Has seleccionado búsqueda por género***\n")
+            print("*** Has seleccionado búsqueda por género ***\n")
             salir = True
         if eleccion == "3":
             menu.pedirNumero()
             salir = True
         if eleccion == "":
-            print("\n***No se ha introducido texto***\n")
+            print("\n*** No se ha introducido texto ***\n")
     return eleccion
 # print(formateador_nombres(contenidocsv))
 # print((formateador_generos(contenidocsv)))
