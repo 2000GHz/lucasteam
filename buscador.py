@@ -212,7 +212,7 @@ def buscar():
         gestion_juegos.max_globalsales()
         buscar()
     elif eleccion == "5":
-        pass
+        os.system("cls")
     else:
         print("\n*** No se ha introducido una de las opciones ***\n")
 
