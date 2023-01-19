@@ -2,7 +2,7 @@ import csv
 import heapq
 from datetime import datetime
 import pandas as pd
-import os
+
 # Esta función abre el archivo CSV, lo vuelca en una lista y la devuelve.
 
 
