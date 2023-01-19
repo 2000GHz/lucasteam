@@ -3,6 +3,7 @@ import heapq
 from datetime import datetime
 import pandas as pd
 import os
+import tabulate
 # Esta función abre el archivo CSV, lo vuelca en una lista y la devuelve.
 
 
@@ -64,38 +65,69 @@ def add_games():
                         )
                     if lista_asubir[i+1] == "":
                         raise ValueError("***No puede estar vacío***")
-                    if fieldnames[i] == "Year" and int(lista_asubir[i+1]) > year_actual and int(lista_asubir[i+1]) < 1950:
+                    if fieldnames[i] == "Platform":
+                        respuesta = compare_platform(lista_asubir[i+1])
+                        if respuesta == False:
+                            raise ValueError("***Escoge un valor de la lista: ***")
+                    elif fieldnames[i] == "Year" and (int(lista_asubir[i+1]) > year_actual \
+                        or int(lista_asubir[i+1]) < 1950):
                         raise ValueError("***Valor inválido***")
-                    if (fieldnames[i] == 'NA_Sales'
-                       or fieldnames[i] == 'EU_Sales'
-                       or fieldnames[i] == 'JP_Sales'
-                       or fieldnames[i] == 'Other_Sales'):
+                    elif (fieldnames[i] == 'NA_Sales' \
+                        or fieldnames[i] == 'EU_Sales'\
+                            or fieldnames[i] == 'JP_Sales'\
+                                or fieldnames[i] == 'Other_Sales'):
                         global_sales += float(lista_asubir[i+1])
                     salir = False
-                except Exception:
-                    print("\n   ***Error valor/es***\n")
+                except Exception as e :
+                    print(e)
                     lista_asubir.pop()
         print("\n***Total de ventas globales: {}***"
               .format(global_sales))
         lista_asubir.append(global_sales)
+        print("Estos son los datos el juego añadido:")
+        print(", ".join(lista_asubir[1:-1]),",",lista_asubir[-1])
         paso2 = input("---> ¿Quieres guardar los cambios en el CSV? S/N: ")
         if paso2.lower() == "s":
             saved_csv(lista_asubir)
-            input("---> ¿Ordenar el fichero CSV por ventas globales? S/N: ")
-            if paso2.lower() == "s":
-                sorted_games()
         paso = input("Quieres añadir algun juego mas S/N:  ")
         if paso.lower() == "n":
             true = False
-
+#Te crea una lista con las plataformas existentes.
+def search_platform():
+    plataformas = []
+    list_csv = get_dict()
+    for plataforma in range(len(list_csv)):
+        if  list_csv[plataforma]["Platform"] in plataformas :
+            pass
+        else:
+            plataformas.append(list_csv[plataforma]["Platform"])
+    return plataformas
+#Compara las plataformas del csv con las escritas por el usuario
+def compare_platform(n): 
+    plataformas = search_platform()
+    plataformas_low = [plataformas_low.lower() for plataformas_low in plataformas]
+    if n.lower() in plataformas_low:
+        salida = True
+        pass
+    else:
+        a = input("La plataforma {} no exite, ¿Quieres añadir una nueva plataforma? S/N: ".format(n))
+        if a.lower() == "n":
+            print("\n")
+            print("Escoge entre una de las plataformas existentes:")
+            print(", ".join(plataformas))
+            print("\n") 
+            salida = False
+        else:
+            salida = True
+    return salida
 # Permite escribir nuevas lineas en el csv
-
 
 def saved_csv(lista_asubir):
     with open("juegos.csv", "a", newline="", encoding="utf-8") as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerow(lista_asubir)
-    print("***Se ha guardado en el fichero CSV***")
+    sorted_games()
+    print("***Se ha guardado en el fichero CSV y se ha ordenado de nuevo el ranking***")
 
 # Funcion que permite ordenar los datos del fichero modificado y los guarda
 
@@ -118,7 +150,6 @@ def sorted_games():
     with open("juegos.csv", "w", newline="", encoding="utf-8") as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerows(sorted_list)
-    print("***Se ha ordenado el fichero CSV***")
 
 
 # La función devuelve los 5 juegos más vendidos en el mundo
