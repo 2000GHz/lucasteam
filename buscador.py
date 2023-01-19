@@ -58,10 +58,7 @@ def filtrado_nombre(termino_a_buscar):
     nombreminusculas = termino_a_buscar.lower()
     lista_nombres_minusculas = formateador_nombres(contenidocsv)
 
-    juegoexiste = False
-
     if nombreminusculas in lista_nombres_minusculas:
-        juegoexiste = True
         for juego in range(len(contenidocsv)):
             if lista_nombres_minusculas[juego] == nombreminusculas:
                 diccionario_juego = contenidocsv[juego]
@@ -69,45 +66,50 @@ def filtrado_nombre(termino_a_buscar):
                       tabulate(diccionario_juego.items(),
                                tablefmt="fancy_grid"))
 
-        if not juegoexiste:
-            add_game_prompt = str(input(
+    else:
+        add_game_prompt = str(input(
                 "\n***No se encuentra ningún juego con este" +
                 " nombre en la base de datos," +
                 " ¿Te gustaría añadirlo?***\n \n1. Sí\n2. No"
                 + "\n3. Realizar otra búsqueda\n\n---> "))
-            if add_game_prompt == '1':
-                gestion_juegos.add_games()
-            elif add_game_prompt == '2':
-                print("================¡Hasta luego!=================")
-            elif add_game_prompt == '3':
-                print('\n')
-                buscar()
-            else:
-                print("\n=====Introduce un valor correcto=====")
+        if add_game_prompt == '1':
+            gestion_juegos.add_games()
+        elif add_game_prompt == '2':
+            print("================¡Hasta luego!=================")
+            buscar()
+        elif add_game_prompt == '3':
+            print('\n')
+            buscar()
+        else:
+            print("\n=====Introduce un valor correcto=====")
 
-        return diccionario_juego
+    return diccionario_juego
 
 
 def filtrado_genero(termino_a_buscar):
 
     termino = ""
     termino = termino_a_buscar.capitalize()
-    print(termino)
+    # print(termino)
 
     lista_aux = contenidocsv
 
     generos = formateador_generos(contenidocsv)
-    print(generos)
+    # print(generos)
 
     if termino not in generos:
-        print("*** El género especificado no existe ***")
+        print("\n*** El género especificado no existe ***")
     else:
         for juego in range(len(lista_aux)):
             if lista_aux[juego]["Genre"] == termino:
 
                 # Devolvemos la lista de juegos correspondientes a este género
 
-                print(lista_aux[juego]["Name"])
+                celda_genero1 = [((lista_aux[juego]["Genre"]))]
+                celda_genero2 = [[((lista_aux[juego]["Name"]))]]
+
+                print(tabulate(celda_genero2, headers=celda_genero1,
+                               tablefmt="fancy_grid", stralign='center'))
 
 
 def filtrado_editor():
@@ -160,12 +162,13 @@ def filtrado_editor():
 def buscar():
 
     os.system("cls")
-    print("===Tipo de búsqueda===")
-    print("\n1. Por nombre")
-    print("\n2. Por género")
-    print("\n3. Por editor")
-    print("\n4. Los 5 juegos más vendidos")
-    print("\n5. Salir")
+    eleccion = 0
+    head = ["Tipo de búsqueda"]
+    data = [["\n1. Por nombre"], [("\n2. Por género")], [("\n3. Por editor")],
+            [("\n4. Los 5 juegos más vendidos")], [("\n5. Salir")]]
+
+    print(tabulate(data, headers=head, tablefmt="fancy_grid",
+                   stralign='center'))
 
     eleccion = str(input("\n---> "))
 
@@ -178,6 +181,7 @@ def buscar():
         else:
             filtrado_nombre(termino_a_buscar)
             input("*** Pulsa enter para volver al menú ***")
+            buscar()
 
     elif eleccion == "2":
         print("\n")
@@ -188,6 +192,7 @@ def buscar():
         else:
             filtrado_genero(termino_a_buscar)
             input("*** Pulsa enter para volver al menú ***")
+            buscar()
 
     elif eleccion == "3":
         print("\n")
@@ -198,9 +203,12 @@ def buscar():
         else:
             filtrado_editor()
             input("*** Pulsa enter para volver al menú ***")
+            buscar()
 
     elif eleccion == "4":
         gestion_juegos.max_globalsales()
+        input("*** Pulsa enter para volver al menú ***")
+        buscar()
     elif eleccion == "5":
         menu.pedirNumero()
     else:
