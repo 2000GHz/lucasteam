@@ -25,7 +25,6 @@ def list_all_csv(n):
     df = pd.read_csv('juegos.csv')
     print(df.head(n))
     input("*** Pulsa cualquier tecla para volver ***")
-    os.system("cls")
 # Esta funcion genera una lista y dentro de ellas un diccionario
 
 
