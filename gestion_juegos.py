@@ -2,6 +2,7 @@ import csv
 import heapq
 import menu
 from datetime import datetime
+import pandas as pd
 # Esta función abre el archivo CSV, lo vuelca en una lista y la devuelve.
 
 
@@ -13,8 +14,12 @@ def get_csv():
         print("***No se ha podido cargar el fichero CSV***")
         print("***Coloque el fichero juegos.csv en la carpeta***")
     return lista_csv
-# Esta funcion genera una lista y dentro de ellas un diccionario
 
+# Lista el csv con formato pandas
+def list_all_csv():
+    df = pd.read_csv('data.csv')
+    print(df)
+# Esta funcion genera una lista y dentro de ellas un diccionario
 
 def get_dict():
     lista = get_csv()
@@ -92,7 +97,7 @@ def saved_csv(lista_asubir):
 
 def sorted_games():
 
-    csv2 = get_CSV()
+    csv2 = get_csv()
     lista_csv = []
     for i in range(1, len(csv2)):
         lista_csv.append(csv2[i])
