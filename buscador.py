@@ -98,7 +98,7 @@ def filtrado_genero(termino_a_buscar):
     # print(generos)
 
     if termino not in generos:
-        print("\n*** El género especificado no existe ***")
+        print("\n*** El género especificado no existe ***\n")
     else:
         for juego in range(len(lista_aux)):
             if lista_aux[juego]["Genre"] == termino:
@@ -163,6 +163,9 @@ def filtrado_editor():
     if eleccion == "3":
         buscar()
 
+    else:
+        buscar()
+
 
 def buscar():
 
@@ -182,7 +185,7 @@ def buscar():
         termino_a_buscar = input("--> Introduce término a buscar: ")
         if termino_a_buscar == "":
             print("\n** No se ha introducido texto **\n")
-            # buscar()
+            buscar()
         else:
             filtrado_nombre(termino_a_buscar)
             input("*** Pulsa enter para volver al menú ***")
@@ -205,7 +208,6 @@ def buscar():
         print("*** Has seleccionado búsqueda por editor ***\n")
         filtrado_editor()
         input("*** Pulsa enter para volver al menú ***")
-        buscar()
 
     elif eleccion == "4":
         gestion_juegos.max_globalsales()
