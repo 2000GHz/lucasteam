@@ -2,6 +2,7 @@ import gestion_juegos
 import buscador
 import os
 
+
 def pedirNumero():
     correcto = False
     num = 0
@@ -10,8 +11,8 @@ def pedirNumero():
             print("\n    ******LUCASTEAM******\n")
             print("1) Listar CSV")
             print("2) Búsqueda de juegos")
-            print("2) Añadir juegos")
-            print("3) Salir ")
+            print("3) Añadir juegos")
+            print("4) Salir ")
             num = int(input("\n--> Introduce una opción: "))
             if num == 1:
                 print("\n=======Listar CSV=======\n")
