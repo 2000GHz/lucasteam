@@ -1,3 +1,3 @@
-import gestion_juegos as gestor
+import menu
 
-print(gestor.get_CSV())
+menu.pedirNumero()
