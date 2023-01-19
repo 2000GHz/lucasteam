@@ -72,7 +72,7 @@ def add_games():
                                                       year_actual or
                                                       int(lista_asubir[i+1])
                                                       < 1950):
-                        raise ValueError("*** Valor inválido ***")
+                        raise ValueError("*** Introduce un año a partir de 1950 ***")
                     elif (fieldnames[i] == 'NA_Sales'
                           or fieldnames[i] == 'EU_Sales'
                           or fieldnames[i] == 'JP_Sales'
