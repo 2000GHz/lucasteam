@@ -113,14 +113,15 @@ def buscar():
             else:
                 salir = True
             filtrado_genero(termino_a_buscar)
+        break
 
 
 def filtrar_por():
     salir = False
     while not salir:
         print("===Tipo de búsqueda===")
-        print("\n 1. Por nombre")
-        print("\n 2. Por género")
+        print("\n1. Por nombre")
+        print("\n2. Por género")
         print("\n3. Salir")
 
         eleccion = str(input("\n---> "))
