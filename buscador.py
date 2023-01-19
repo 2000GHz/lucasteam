@@ -1,5 +1,5 @@
 import gestion_juegos
-
+import menu
 contenidocsv = []
 contenidocsv = gestion_juegos.get_dict()
 
@@ -108,7 +108,7 @@ def filtrar_por():
             print("***Has seleccionado búsqueda por género***\n")
             salir = True
         if eleccion == "3":
-            main.pedirNumero()
+            menu.pedirNumero()
         if eleccion == "":
             print("\n***No se ha introducido texto***\n")
     return eleccion

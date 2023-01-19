@@ -2,6 +2,7 @@ import csv
 import heapq
 from datetime import datetime
 import pandas as pd
+import menu
 # Esta función abre el archivo CSV, lo vuelca en una lista y la devuelve.
 
 
@@ -79,7 +80,7 @@ def add_games():
         paso = input("Quieres añadir algun juego mas S/N:  ")
         if paso.lower() == "n":
             true = False
-
+        menu.pedirNumero()
 
 # Permite escribir nuevas lineas en el csv
 
