@@ -35,9 +35,9 @@ def pedirNumero():
                 correcto = True
                 os.system("cls")
             else:
-                print("\n***Introduce una opción válida***\n")
+                print("\n*** Introduce una opción válida ***\n")
                 correcto = False
                 os.system("cls")
         except ValueError:
-            print("***Error, introduce un número entero***\n")
+            print("*** Error, introduce un número entero ***\n")
             os.system("cls")
