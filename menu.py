@@ -2,6 +2,7 @@ import gestion_juegos
 import buscador
 import os
 
+
 def pedirNumero():
     correcto = False
     num = 0
@@ -20,7 +21,7 @@ def pedirNumero():
             elif num == 2:
                 print("\n=======Añadir juego=======\n")
                 os.system("cls")
-                gestion_juegos.add_games()  
+                gestion_juegos.add_games()
             elif num == 3:
                 correcto = True
                 os.system("cls")
@@ -31,4 +32,3 @@ def pedirNumero():
         except ValueError:
             print("***Error, introduce un número entero***\n")
             os.system("cls")
-
