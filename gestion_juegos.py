@@ -174,4 +174,4 @@ def max_globalsales():
         print(num_globalsales[i]["Rank"], "juego: ",
               num_globalsales[i]["Name"], ", con ",
               num_globalsales[i]["Global_Sales"], " millones de ventas.")
-    input("*** Pulse cualquier tecla para continuar ***")
+    input("\n*** Pulse cualquier tecla para continuar ***")

@@ -24,7 +24,7 @@ def pedirNumero():
                 correcto = True
                 print("\n=======Listar CSV=======\n")
                 n = int(input("*** Introduce el numero" +
-                              " de filas a mostrar ***"))
+                              " de filas a mostrar ***\n"))
                 print("\n")
                 gestion_juegos.list_all_csv(n)
                 os.system("cls")
