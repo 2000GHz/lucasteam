@@ -1,5 +1,4 @@
 import gestion_juegos
-import menu
 import os
 from tabulate import tabulate
 contenidocsv = []
@@ -213,7 +212,7 @@ def buscar():
         gestion_juegos.max_globalsales()
         buscar()
     elif eleccion == "5":
-        menu.pedirNumero()
+        pass
     else:
         print("\n*** No se ha introducido una de las opciones ***\n")
 
