@@ -1,18 +1,21 @@
 import gestion_juegos
 import buscador
 import os
+from tabulate import tabulate
 
 
 def pedirNumero():
     correcto = False
     num = 0
+    os.system("cls")
     while (not correcto):
         try:
-            print("\n    ******LUCASTEAM******\n")
-            print("1) Listar CSV")
-            print("2) Búsqueda de juegos")
-            print("3) Añadir juegos")
-            print("4) Salir ")
+            col_name = ["\n  ******LUCASTEAM******\n"]
+            data = [["1 · Líbrería de juegos"],
+                    ["2 · Búsqueda de juegos"],
+                    ["3 · Añadir juegos"],
+                    ["4 · Salir "]]
+            print(tabulate(data, headers=col_name, tablefmt="fancy_grid"))
             num = int(input("\n--> Introduce una opción: "))
             if num == 1:
                 print("\n=======Listar CSV=======\n")
