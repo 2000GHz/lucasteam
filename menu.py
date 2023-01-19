@@ -27,6 +27,9 @@ def pedirNumero():
                               " de filas a mostrar ***"))
                 print("\n")
                 gestion_juegos.list_all_csv(n)
+                os.system("cls")
+                pedirNumero()
+
             elif num == 2:
                 print("\n=======Buscar juego=======\n")
                 os.system("cls")
