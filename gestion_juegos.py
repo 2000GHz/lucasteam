@@ -17,7 +17,7 @@ def get_csv():
 
 # Lista el csv con formato pandas
 def list_all_csv():
-    df = pd.read_csv('data.csv')
+    df = pd.read_csv('juedos.csv')
     print(df)
 # Esta funcion genera una lista y dentro de ellas un diccionario
 
