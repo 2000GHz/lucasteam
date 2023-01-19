@@ -18,10 +18,13 @@ def get_csv():
 # Lista el csv con formato pandas
 
 
-def list_all_csv():
+def list_all_csv(n):
+    #df = pd.read_csv('juegos.csv')
+    #print(df)
+    pd.options.display.max_rows = None
     df = pd.read_csv('juegos.csv')
-    print(df)
-    input("Pulsa cualquier tecla para volver: ")
+    print(df.head(n))
+    input("***Pulsa cualquier tecla para volver: ")
     os.system("cls")
 # Esta funcion genera una lista y dentro de ellas un diccionario
 
@@ -61,9 +64,7 @@ def add_games():
                         )
                     if lista_asubir[i+1] == "":
                         raise ValueError("***No puede estar vacío***")
-                    if fieldnames[i] == "Year" and int(
-                         lista_asubir[i+1]) > year_actual and int(
-                         lista_asubir[i+1]) < 1950:
+                    if fieldnames[i] == "Year" and int(lista_asubir[i+1]) > year_actual and int(lista_asubir[i+1]) < 1950:
                         raise ValueError("***Valor inválido***")
                     if (fieldnames[i] == 'NA_Sales'
                        or fieldnames[i] == 'EU_Sales'
@@ -71,7 +72,7 @@ def add_games():
                        or fieldnames[i] == 'Other_Sales'):
                         global_sales += float(lista_asubir[i+1])
                     salir = False
-                except ValueError:
+                except Exception:
                     print("\n   ***Error valor/es***\n")
                     lista_asubir.pop()
         print("\n***Total de ventas globales: {}***"
