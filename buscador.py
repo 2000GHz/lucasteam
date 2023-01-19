@@ -1,4 +1,5 @@
 import gestion_juegos
+import main
 
 contenidocsv = []
 contenidocsv = gestion_juegos.get_dict()
@@ -96,6 +97,7 @@ def filtrar_por():
         print("===Tipo de búsqueda===")
         print("\n 1. Por nombre")
         print("\n 2. Por género")
+        print("\n3. Salir")
         eleccion = str(input("\n---> "))
         if eleccion == "1":
             print("\n")
@@ -106,6 +108,8 @@ def filtrar_por():
             print("\n")
             print("***Has seleccionado búsqueda por género***\n")
             salir = True
+        if eleccion == "3":
+            main.pedirNumero()
         if eleccion == "":
             print("\n***No se ha introducido texto***\n")
     return eleccion
