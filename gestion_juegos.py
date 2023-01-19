@@ -61,8 +61,9 @@ def add_games():
                         )
                     if lista_asubir[i+1] == "":
                         raise ValueError("***No puede estar vacío***")
-                    if fieldnames[i] == "Year" and ((int(
-                         lista_asubir[i+1]) > year_actual)):
+                    if fieldnames[i] == "Year" and int(
+                         lista_asubir[i+1]) > year_actual and int(
+                         lista_asubir[i+1]) < 1950:
                         raise ValueError("***Valor inválido***")
                     if (fieldnames[i] == 'NA_Sales'
                        or fieldnames[i] == 'EU_Sales'
