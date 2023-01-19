@@ -123,6 +123,7 @@ def filtrado_editor():
     eleccion = str(input("*** ¿Qué deseas hacer? ***\n" +
                          "\n1. Mostrar todos los editores" +
                          "\n2. Mostrar los juegos de un editor" +
+                         "\n3. Volver al menú" +
                          "\n ---> "))
 
     if eleccion == "1":
@@ -140,6 +141,7 @@ def filtrado_editor():
             if termino_a_buscar == "":
                 salir = False
                 print("\n*** No se ha introducido texto ***\n")
+                buscar()
             else:
                 if termino not in lista_minusculas:
                     print("*** El editor especificado no existe ***\n")
@@ -158,11 +160,13 @@ def filtrado_editor():
                 print(lista_aux[i]["Name"])
             salir = True
 
+    if eleccion == "3":
+        buscar()
+
 
 def buscar():
 
     os.system("cls")
-    eleccion = 0
     head = ["Tipo de búsqueda"]
     data = [["\n1. Por nombre"], [("\n2. Por género")], [("\n3. Por editor")],
             [("\n4. Los 5 juegos más vendidos")], [("\n5. Salir")]]
@@ -178,6 +182,7 @@ def buscar():
         termino_a_buscar = input("--> Introduce término a buscar: ")
         if termino_a_buscar == "":
             print("\n** No se ha introducido texto **\n")
+            # buscar()
         else:
             filtrado_nombre(termino_a_buscar)
             input("*** Pulsa enter para volver al menú ***")
@@ -189,6 +194,7 @@ def buscar():
         termino_a_buscar = input("--> Introduce término a buscar: ")
         if termino_a_buscar == "":
             print("\n** No se ha introducido texto **\n")
+            buscar()
         else:
             filtrado_genero(termino_a_buscar)
             input("*** Pulsa enter para volver al menú ***")
@@ -197,17 +203,12 @@ def buscar():
     elif eleccion == "3":
         print("\n")
         print("*** Has seleccionado búsqueda por editor ***\n")
-        termino_a_buscar = input("--> Introduce término a buscar: ")
-        if termino_a_buscar == "":
-            print("\n** No se ha introducido texto **\n")
-        else:
-            filtrado_editor()
-            input("*** Pulsa enter para volver al menú ***")
-            buscar()
+        filtrado_editor()
+        input("*** Pulsa enter para volver al menú ***")
+        buscar()
 
     elif eleccion == "4":
         gestion_juegos.max_globalsales()
-        input("*** Pulsa enter para volver al menú ***")
         buscar()
     elif eleccion == "5":
         menu.pedirNumero()
