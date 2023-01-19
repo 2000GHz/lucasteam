@@ -2,7 +2,7 @@ import csv
 import heapq
 from datetime import datetime
 import pandas as pd
-import menu
+import os
 # Esta función abre el archivo CSV, lo vuelca en una lista y la devuelve.
 
 
@@ -22,6 +22,7 @@ def list_all_csv():
     df = pd.read_csv('juegos.csv')
     print(df)
     input("Pulsa cualquier tecla para volver: ")
+    os.system("cls")
 # Esta funcion genera una lista y dentro de ellas un diccionario
 
 
@@ -84,7 +85,6 @@ def add_games():
         paso = input("Quieres añadir algun juego mas S/N:  ")
         if paso.lower() == "n":
             true = False
-        menu.pedirNumero()
 
 # Permite escribir nuevas lineas en el csv
 
