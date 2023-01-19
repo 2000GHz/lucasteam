@@ -59,7 +59,7 @@ def add_games():
             while salir:
                 try:
                     lista_asubir.append(
-                        input("--> Introduce el/la {}: ".format(fieldnames[i]))
+                        input("--> Introduce {}: ".format(fieldnames[i]))
                         )
                     if lista_asubir[i+1] == "":
                         raise ValueError("***No puede estar vacío***")
