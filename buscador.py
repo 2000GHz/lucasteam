@@ -1,5 +1,4 @@
 import gestion_juegos
-import main
 
 contenidocsv = []
 contenidocsv = gestion_juegos.get_dict()

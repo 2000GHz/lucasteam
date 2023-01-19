@@ -1,3 +1,3 @@
-from menu import pedirNumero
+import menu
 
-pedirNumero()
+menu.pedirNumero()
