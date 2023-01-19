@@ -1,7 +1,7 @@
 import gestion_juegos
 import menu
 import os
-import tabulate
+from tabulate import tabulate
 contenidocsv = []
 contenidocsv = gestion_juegos.get_dict()
 
@@ -52,6 +52,7 @@ def formateador_generos(contenidocsv):
 
 
 def filtrado_nombre(termino_a_buscar):
+
     diccionario_juego = contenidocsv
 
     nombreminusculas = termino_a_buscar.lower()
@@ -67,8 +68,6 @@ def filtrado_nombre(termino_a_buscar):
                 print("========================================\n",
                       tabulate(diccionario_juego.items(),
                                tablefmt="fancy_grid"))
-    else:
-        juegoexiste = False
 
         if not juegoexiste:
             add_game_prompt = str(input(
@@ -157,53 +156,55 @@ def filtrado_editor():
                 print(lista_aux[i]["Name"])
             salir = True
 
+
 def buscar():
-    salir = False
-    while not salir:
-        os.system("cls")
-        print("===Tipo de búsqueda===")
-        print("\n1. Por nombre")
-        print("\n2. Por género")
-        print("\n3. Por editor")
-        print("\n4. Los 5 juegos más vendidos")
-        print("\n5. Salir")
 
-        eleccion = str(input("\n---> "))
+    os.system("cls")
+    print("===Tipo de búsqueda===")
+    print("\n1. Por nombre")
+    print("\n2. Por género")
+    print("\n3. Por editor")
+    print("\n4. Los 5 juegos más vendidos")
+    print("\n5. Salir")
 
-        if eleccion == "1":
-            print("\n")
-            print("*** Has seleccionado búsqueda por nombre ***\n")
-            termino_a_buscar = input("--> Introduce término a buscar: ")
-            if termino_a_buscar == "":
-                print("\n** No se ha introducido texto **\n")
-            else:
-                filtrado_genero(termino_a_buscar)
-        elif eleccion == "2":
-            print("\n")
-            print("*** Has seleccionado búsqueda por género ***\n")
-            termino_a_buscar = input("--> Introduce término a buscar: ")
-            if termino_a_buscar == "":
-                print("\n** No se ha introducido texto **\n")
-            else:
-                filtrado_genero(termino_a_buscar)
-            filtrado_genero()
-        elif eleccion == "3":
-            print("\n")
-            print("*** Has seleccionado búsqueda por editor ***\n")
-            termino_a_buscar = input("--> Introduce término a buscar: ")
-            if termino_a_buscar == "":
-                print("\n** No se ha introducido texto **\n")
-            else:
-                filtrado_genero(termino_a_buscar)
-            filtrado_editor()
-        elif eleccion == "4":
-            gestion_juegos.max_globalsales()
-        elif eleccion == "5":
-            menu.pedirNumero()
-            salir = True
+    eleccion = str(input("\n---> "))
+
+    if eleccion == "1":
+        print("\n")
+        print("*** Has seleccionado búsqueda por nombre ***\n")
+        termino_a_buscar = input("--> Introduce término a buscar: ")
+        if termino_a_buscar == "":
+            print("\n** No se ha introducido texto **\n")
         else:
-            print("\n*** No se ha introducido una de las opciones ***\n")
-    return eleccion
+            filtrado_nombre(termino_a_buscar)
+            input("*** Pulsa enter para volver al menú ***")
+
+    elif eleccion == "2":
+        print("\n")
+        print("*** Has seleccionado búsqueda por género ***\n")
+        termino_a_buscar = input("--> Introduce término a buscar: ")
+        if termino_a_buscar == "":
+            print("\n** No se ha introducido texto **\n")
+        else:
+            filtrado_genero(termino_a_buscar)
+            input("*** Pulsa enter para volver al menú ***")
+
+    elif eleccion == "3":
+        print("\n")
+        print("*** Has seleccionado búsqueda por editor ***\n")
+        termino_a_buscar = input("--> Introduce término a buscar: ")
+        if termino_a_buscar == "":
+            print("\n** No se ha introducido texto **\n")
+        else:
+            filtrado_editor()
+            input("*** Pulsa enter para volver al menú ***")
+
+    elif eleccion == "4":
+        gestion_juegos.max_globalsales()
+    elif eleccion == "5":
+        menu.pedirNumero()
+    else:
+        print("\n*** No se ha introducido una de las opciones ***\n")
 
 # print(formateador_nombres(contenidocsv))
 # print((formateador_generos(contenidocsv)))
