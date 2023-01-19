@@ -44,7 +44,8 @@ def pedirNumero():
                 correcto = False
                 os.system("cls")
         except ValueError:
-            print("*** Error, introduce un número entero ***\n")
             os.system("cls")
+            print("\n*** Error, introduce un número entero ***\n")
+
         except Exception as e:
             print(e)
