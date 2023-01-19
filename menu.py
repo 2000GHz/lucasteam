@@ -22,7 +22,9 @@ def pedirNumero():
                 os.system("cls")
                 correcto = True
                 print("\n=======Listar CSV=======\n")
-                n = int(input("***Pon el numero de filas que quieres mostrar: "))
+                n = int(input("***Pon el numero" +
+                              " de filas que quieres mostrar: "))
+                print("\n")
                 gestion_juegos.list_all_csv(n)
             if num == 2:
                 print("\n=======Buscar juego=======\n")
