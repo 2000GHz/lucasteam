@@ -15,15 +15,16 @@ def pedirNumero():
                     ["2 · Búsqueda de juegos"],
                     ["3 · Añadir juegos"],
                     ["4 · Salir "]]
-            print(tabulate(data, headers=col_name, tablefmt="fancy_grid", stralign='center'))
-            num = int(input("\n--> Introduce una opción: "))
+            print(tabulate(data, headers=col_name, tablefmt="fancy_grid",
+                           stralign='center'))
+            num = int(input("\n---> Introduce una opción: "))
             if num == 1:
                 print("\n=======Listar CSV=======\n")
                 os.system("cls")
                 correcto = True
                 print("\n=======Listar CSV=======\n")
-                n = int(input("***Pon el numero" +
-                              " de filas que quieres mostrar: "))
+                n = int(input("*** Introduce el numero" +
+                              " de filas a mostrar ***"))
                 print("\n")
                 gestion_juegos.list_all_csv(n)
             elif num == 2:
