@@ -81,12 +81,20 @@ def buscar():
 
         if eleccion == "1":
             termino_a_buscar = (str(input("--> Introduce término a buscar: ")))
-            salir = True
+            if termino_a_buscar == "":
+                print("\n***No se ha introducido texto***\n")
+                salir = False
+            else:
+                salir = True
             filtrado_nombre(termino_a_buscar)
 
         if eleccion == "2":
             termino_a_buscar = (str(input("--> Introduce término a buscar: ")))
-            salir = True
+            if termino_a_buscar == "":
+                print("\n***No se ha introducido texto***\n")
+                salir = False
+            else:
+                salir = True
             filtrado_genero(termino_a_buscar)
 
 
@@ -97,7 +105,9 @@ def filtrar_por():
         print("\n 1. Por nombre")
         print("\n 2. Por género")
         print("\n3. Salir")
+
         eleccion = str(input("\n---> "))
+
         if eleccion == "1":
             print("\n")
             print("***Has seleccionado búsqueda por nombre***\n")
