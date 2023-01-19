@@ -157,38 +157,7 @@ def filtrado_editor():
                 print(lista_aux[i]["Name"])
             salir = True
 
-
 def buscar():
-
-    salir = False
-    eleccion = filtrar_por()
-    while (not salir):
-
-        if eleccion == "1":
-            termino_a_buscar = (str(input("--> Introduce término a buscar: ")))
-            if termino_a_buscar == "":
-                print("\n*** No se ha introducido texto ***\n")
-                salir = False
-            else:
-                salir = True
-            filtrado_nombre(termino_a_buscar)
-
-        if eleccion == "2":
-            termino_a_buscar = (str(input("--> Introduce término a buscar: ")))
-            if termino_a_buscar == "":
-                print("\n*** No se ha introducido texto ***\n")
-                salir = False
-            else:
-                salir = True
-            filtrado_genero(termino_a_buscar)
-
-        if eleccion == "3":
-            salir = True
-            filtrado_editor()
-        break
-
-
-def filtrar_por():
     salir = False
     while not salir:
         os.system("cls")
@@ -204,14 +173,28 @@ def filtrar_por():
         if eleccion == "1":
             print("\n")
             print("*** Has seleccionado búsqueda por nombre ***\n")
-            buscar()
+            termino_a_buscar = input("--> Introduce término a buscar: ")
+            if termino_a_buscar == "":
+                print("\n** No se ha introducido texto **\n")
+            else:
+                filtrado_genero(termino_a_buscar)
         elif eleccion == "2":
             print("\n")
             print("*** Has seleccionado búsqueda por género ***\n")
+            termino_a_buscar = input("--> Introduce término a buscar: ")
+            if termino_a_buscar == "":
+                print("\n** No se ha introducido texto **\n")
+            else:
+                filtrado_genero(termino_a_buscar)
             filtrado_genero()
         elif eleccion == "3":
             print("\n")
             print("*** Has seleccionado búsqueda por editor ***\n")
+            termino_a_buscar = input("--> Introduce término a buscar: ")
+            if termino_a_buscar == "":
+                print("\n** No se ha introducido texto **\n")
+            else:
+                filtrado_genero(termino_a_buscar)
             filtrado_editor()
         elif eleccion == "4":
             gestion_juegos.max_globalsales()
