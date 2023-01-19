@@ -22,7 +22,9 @@ def pedirNumero():
                 os.system("cls")
                 correcto = True
                 print("\n=======Listar CSV=======\n")
-                n = int(input("***Pon el numero de filas que quieres mostrar: "))
+                n = int(input("***Pon el numero" +
+                              " de filas que quieres mostrar: "))
+                print("\n")
                 gestion_juegos.list_all_csv(n)
             if num == 2:
                 print("\n=======Buscar juego=======\n")
@@ -37,11 +39,11 @@ def pedirNumero():
                 correcto = True
                 os.system("cls")
             else:
-                print("\n***Introduce una opción válida***\n")
+                print("\n*** Introduce una opción válida ***\n")
                 correcto = False
                 os.system("cls")
         except ValueError:
-            print("***Error, introduce un número entero***\n")
+            print("*** Error, introduce un número entero ***\n")
             os.system("cls")
         except Exception as e:
             print(e)
