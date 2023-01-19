@@ -120,9 +120,9 @@ def filtrado_editor():
     corrige_duplicados = []
 
     eleccion = str(input("*** ¿Qué deseas hacer? ***\n" +
-                         "\n1. Mostrar todos los editores" +
-                         "\n2. Mostrar los juegos de un editor" +
-                         "\n3. Volver al menú" +
+                         "\n1 · Mostrar todos los editores" +
+                         "\n2 · Mostrar los juegos de un editor" +
+                         "\n3 · Volver al menú" +
                          "\n ---> "))
 
     if eleccion == "1":
@@ -170,8 +170,9 @@ def buscar():
 
     os.system("cls")
     head = ["Tipo de búsqueda"]
-    data = [["\n1. Por nombre"], [("\n2. Por género")], [("\n3. Por editor")],
-            [("\n4. Los 5 juegos más vendidos")], [("\n5. Salir")]]
+    data = [["\n1 · Por nombre"], [("\n2 · Por género")],
+            [("\n3 · Por editor")], [("\n4 · Los 5 juegos más vendidos")],
+            [("\n5 · Salir")]]
 
     print(tabulate(data, headers=head, tablefmt="fancy_grid",
                    stralign='center'))
