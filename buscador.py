@@ -1,5 +1,6 @@
 import gestion_juegos
 import menu
+import os
 contenidocsv = []
 contenidocsv = gestion_juegos.get_dict()
 
@@ -187,31 +188,32 @@ def buscar():
 def filtrar_por():
     salir = False
     while not salir:
+        os.system("cls")
         print("===Tipo de búsqueda===")
         print("\n1. Por nombre")
         print("\n2. Por género")
         print("\n3. Por editor")
-        print("\n4. Salir")
+        print("\n4. Los 5 juegos más vendidos")
+        print("\n5. Salir")
 
         eleccion = str(input("\n---> "))
 
         if eleccion == "1":
             print("\n")
             print("*** Has seleccionado búsqueda por nombre ***\n")
-            salir = True
-        if eleccion == "2":
+        elif eleccion == "2":
             print("\n")
             print("*** Has seleccionado búsqueda por género ***\n")
-            salir = True
-        if eleccion == "3":
+        elif eleccion == "3":
             print("\n")
             print("*** Has seleccionado búsqueda por editor ***\n")
-            salir = True
-        if eleccion == "4":
+        elif eleccion == "4":
+            gestion_juegos.max_globalsales()
+        elif eleccion == "5":
             menu.pedirNumero()
             salir = True
-        if eleccion == "":
-            print("\n*** No se ha introducido texto ***\n")
+        else:
+            print("\n*** No se ha introducido una de las opciones ***\n")
     return eleccion
 
 # print(formateador_nombres(contenidocsv))

@@ -155,12 +155,11 @@ def sorted_games():
 # La función devuelve los 5 juegos más vendidos en el mundo
 
 def max_globalsales():
-    diccionario_juego = []
     lista_aux = get_dict()
-    num_globalsales = []
     num_globalsales = (
         heapq.nlargest(5, lista_aux, key=lambda s: float(s['Global_Sales'])))
     for i in range(len(num_globalsales)):
         print(num_globalsales[i]["Name"], num_globalsales[i]["Global_Sales"])
+    input("***Pulsa cualquier tecla para salir***")
+    
 
-    return diccionario_juego
