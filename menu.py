@@ -7,6 +7,7 @@ from tabulate import tabulate
 def pedirNumero():
     correcto = False
     num = 0
+    os.system("cls")
     while (not correcto):
         try:
             col_name = ["\n  ******LUCASTEAM******\n"]
