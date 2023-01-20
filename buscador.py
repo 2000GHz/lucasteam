@@ -113,53 +113,38 @@ def filtrado_genero(termino_a_buscar):
 
 def filtrado_editor():
     lista_aux = contenidocsv
-
     editores = formateador_editores(contenidocsv)
     lista_originales = editores[0]
     lista_minusculas = editores[1]
-    corrige_duplicados = []
 
-    eleccion = str(input("*** ¿Qué deseas hacer? ***\n" +
-                         "\n1 · Mostrar todos los editores" +
-                         "\n2 · Mostrar los juegos de un editor" +
-                         "\n3 · Volver al menú" +
-                         "\n ---> "))
+    eleccion = input("*** ¿Qué deseas hacer? ***\n" +
+                     "\n1 · Mostrar todos los editores" +
+                     "\n2 · Mostrar los juegos de un editor" +
+                     "\n3 · Volver al menú" +
+                     "\n ---> ")
 
     if eleccion == "1":
         lista_sin_duplicados = set(lista_originales)
         print(lista_sin_duplicados)
 
-    if eleccion == "2":
-        salir = False
-        while not salir:
-            termino_a_buscar = (str(input("--> Introduce término a buscar: ")))
-            termino = ""
+    elif eleccion == "2":
+        while True:
+            termino_a_buscar = input("--> Introduce término a buscar: ")
             termino = termino_a_buscar.lower()
-
-            print(termino)
             if termino_a_buscar == "":
-                salir = False
                 print("\n*** No se ha introducido texto ***\n")
                 buscar()
             else:
                 if termino not in lista_minusculas:
                     print("*** El editor especificado no existe ***\n")
                 else:
-                    for juego in range(len(lista_aux)):
-                        if lista_minusculas[juego] == termino:
-                            corrige_duplicados.append(juego)
-                            if juego in corrige_duplicados:
-                                pass
-                            else:
-                                corrige_duplicados.append(juego)
+                    juegos = [lista_aux[i]["Name"] for i in range
+                              (len(lista_aux)) if
+                              lista_minusculas[i] == termino]
+                    print(*juegos, sep='\n')
+                    break
 
-                            # Devolvemos la lista de juegos del editor
-
-            for i in corrige_duplicados:
-                print(lista_aux[i]["Name"])
-            salir = True
-
-    if eleccion == "3":
+    elif eleccion == "3":
         buscar()
 
     else:
