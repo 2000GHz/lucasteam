@@ -128,6 +128,7 @@ def filtrado_editor():
     if eleccion == "1":
         lista_sin_duplicados = set(lista_originales)
         print(lista_sin_duplicados)
+        input("***Cualquier tecla para volver***")
 
     if eleccion == "2":
         salir = False
@@ -140,10 +141,12 @@ def filtrado_editor():
             if termino_a_buscar == "":
                 salir = False
                 print("\n*** No se ha introducido texto ***\n")
+                input("***Cualquier tecla para volver***")
                 buscar()
             else:
                 if termino not in lista_minusculas:
                     print("*** El editor especificado no existe ***\n")
+                    input("***Cualquier tecla para volver***")
                 else:
                     for juego in range(len(lista_aux)):
                         if lista_minusculas[juego] == termino:
@@ -157,6 +160,7 @@ def filtrado_editor():
 
             for i in corrige_duplicados:
                 print(lista_aux[i]["Name"])
+            input("***Cualquier tecla para volver***")
             salir = True
 
     if eleccion == "3":
